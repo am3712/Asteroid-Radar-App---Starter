@@ -18,14 +18,14 @@ class DetailFragment : Fragment() {
     ): View {
         val binding = FragmentDetailBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
-        val args: DetailFragmentArgs by navArgs<DetailFragmentArgs>()
+        val args: DetailFragmentArgs by navArgs()
         binding.asteroid = args.selectedAsteroid
         binding.helpButton.setOnClickListener { displayAstronomicalUnitExplanationDialog() }
         return binding.root
     }
 
     private fun displayAstronomicalUnitExplanationDialog() {
-        val builder = AlertDialog.Builder(activity!!)
+        val builder = AlertDialog.Builder(requireActivity())
             .setMessage(getString(R.string.astronomica_unit_explanation))
             .setPositiveButton(android.R.string.ok, null)
         builder.create().show()
